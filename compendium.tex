@@ -1,0 +1,290 @@
+\documentclass[12pt,fleqn]{article}
+
+\usepackage{amsmath,amssymb,amsthm,enumerate,color,graphics,epsfig,url}
+
+\usepackage{cmap}
+
+\usepackage[pdftex,
+colorlinks,%
+linkcolor=blue,citecolor=red,urlcolor=blue,
+hyperindex,%
+plainpages=false,%
+bookmarksopen,%
+bookmarksnumbered,%
+unicode]{hyperref}
+\usepackage [dvipsnames] {xcolor}
+\usepackage{pgf,tikz,pgfplots,tikz-3dplot}
+\usetikzlibrary{calendar,folding}
+\usetikzlibrary{arrows,patterns,decorations.pathmorphing,backgrounds,positioning,fit,petri}
+\usetikzlibrary{calc,3d,intersections,shapes}
+%\pgfplotsset{compat=1.11}
+\usepgfplotslibrary{polar}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ukrainian]{babel}
+
+\setlength{\textwidth}{160.0mm}
+\setlength{\textheight}{240.0mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\evensidemargin}{0mm}
+\setlength{\topmargin}{-18mm}
+\setlength{\parindent}{5.0mm}
+
+%\newtheorem{theorem}{Теорема}[section]
+%\newtheorem*{theoremN}{Теорема}
+%\newtheorem{proposition}{Твердження}[section]
+%\newtheorem{statement}{Твердження}[section]
+%\newtheorem{lemma}{Лема}[section]
+%\newtheorem{corollary}{Наслідок}[section]
+
+{
+%\theoremstyle{definition}
+%\newtheorem{definition}{Означення}[section]
+%\newtheorem{example}{Приклад}[section]
+%\newtheorem{problem}{Задача}[section]
+%\newtheorem*{problem*}{Задача}
+%\newtheorem{question}{Питання}[section]
+
+
+\newtheorem{exm}{Приклад}[section]
+\theoremstyle{theorem}
+\newtheorem{thm}{Теорема}[section]
+\newtheorem{ozn}{Означення}[section]
+\theoremstyle{proof}
+\newtheorem*{dov}{Доведення}
+\newtheorem{corollary}{Наслідок}[section]
+\newtheorem{remark}{Зауваження}[section]
+}
+
+\usepackage[labelsep=period]{caption}
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\vspace{50mm}
+
+\begin{center}
+\Large\bf
+Конспект\\[50mm]
+{\Huge}
+\end{center}
+
+\vspace{50mm}
+
+\newpage
+
+\tableofcontents
+
+%\listoffigures
+
+\newpage
+
+
+\section{Інтеграл і первісна.}\label{int}\allowdisplaybreaks
+
+Нехай $D$ --- однозв'язна область, $f(z)$ --- аналітична в $D$, $z_0 \in D$ --- фіксована точка, $L_1$ і $L_2$ --- спрямлювані криві, які лежать в $D$ і з'єднують ! з довільною точкою $z \in D$. Якщо --- $L_2$ крива, яка проходиться від точки $z$ до точки $z$, то криві $L_1$ і --- $L_2$ складають замкнуту спрямлювану криву, і за інтегральною теоремою Коші:
+
+\begin{equation}\label{xy}
+!!!
+\end{equation}
+
+Тобто, значення інтеграла від аналітичної функції $f(z)$ не залежить від кривої, по якій проводиться інтегрування, а залежить тільки від початкової і кінцевої точок цієї кривої. Нехай точка $f(z)$ Фіксована, тоді інтеграл \(\int_{z_0}^{z} f(\xi) \,d\xi \) є функцією тільки від $z$, тобто
+\begin{equation}\label{1.2.2}
+\int_{z_0}^{z} f(\xi) \,d\xi = F(z)
+\end{equation}
+
+Функція $F(z)$ диференційовна в області $D$ і $F'(z)=f(z)$. Доведемо дещо більш загальне твердження.
+
+\begin{thm}\label{theor_l_z}
+Нехай функція $f(z)$ неперервна в скінченній одноз'язній області $D$, і нехай інтеграл від $f(z)$ по довільній замкнутій кривій, яка лежить в області $D$, рівний нулю. Тоді функція $F(z)= \int_{z_0}^{z} f(\xi) \,d\xi$ , де $z_0 \in D$, $z \in D$, диференційовна в області $D$ , тобто
+\[ \left(\int_{z_0}^{z} f(\xi) \,d\xi\right)' = f(z) \]
+
+\end{thm}
+
+\begin{proof}
+При умовах теореми інтеграл  не залежить від кривої \(\int f(\xi) \,d\xi \), яка лежить в області $D$ і з'єднує точки $z_0$ і $z$, а, значить, функція
+\[ F(z) = \int_{z_0}^{z} f(\xi) \,d\xi \]
+
+однозначна в області $D$. Для точки $z+ \Delta z\in D$, яка лежить в околі точки $z \in D$, різниця
+\[ \gamma = \frac{F(z+\Delta z)-F(z)}{\Delta z} - f(z) \longrightarrow 0 \quad \text{при $\Delta z \rightarrow 0$.} \]
+
+Покажемо це. Очевидно
+
+\begin{equation}\label{xy}
+\frac{F(z+\Delta z) - F(z)}{\Delta z} = \frac{1}{\Delta z} \left\{ \int_{z_0}^{z+\Delta z} f(\xi) \,d\xi - \int_{z_0}^{z} f(\xi) \,d\xi \right\} = \frac{1}{\Delta z} \int_{z}^{z+\Delta z} f(\xi) \,d\xi
+\end{equation}
+
+Так як \(\int_{z}^{z+\Delta z} f(\xi) \,d\xi = \Delta z \) , то
+
+\begin{equation}\label{xy}
+f(z) = \frac{f(z)}{\Delta z} \int_{z}^{z+\Delta z} \,d\xi = \frac{1}{\Delta z} \int_{z}^{z+\Delta z} f(z) \,d\xi
+\end{equation}
+
+Оскільки інтеграл в ! і ! незалежать від шляху по якому проводяться інтегрування, то візьмемо за шлях інтегрування відрізок, який з'єднує точки $z$ і $z+\Delta z$. Будемо мати
+
+\[ \gamma = \frac{1}{\Delta z} \int_{z}^{z+\Delta z}\left[ f(\xi) - f(z) \right] \,d\xi \text{,} \]
+
+або
+\begin{equation}\label{xy}
+|\gamma| \leq \frac{1}{|\Delta z|} \int_{z}^{z+\Delta z}\left| f(\xi) - f(z) \right|\cdot|d\xi|
+\end{equation}
+
+З неперервності функції $f(z)$ в області $D$, а значить і в точці $z\in D$ для $\\ \forall\epsilon > 0 \exists \delta = \delta(\epsilon) > 0$ таке, що при $|z-\xi|<\delta$ справджується нерівність
+\begin{equation}\label{xy}
+|f(z)-f(\xi)|<\epsilon
+\end{equation}
+
+Ясно, що $|z-\xi|\leq |\Delta z|$, бо $\xi$ в ! належить відрізку $[z, z+\Delta z]$, тому ! буде виконуватися при $|\Delta z| < \delta$, а значить
+
+\[ |\gamma| = \frac{1}{\Delta z} \cdot \epsilon \cdot |\Delta z|  \]
+
+Таким чином існує
+
+\[ \lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=f(z) \text{,} \]
+
+тобто $F'(z)=f(z)$
+\end{proof}
+
+Нехай функція $f(z)$ означена в області $D$, а функція $F(z)$ визначена рівністю !,  визначена в цій області.
+
+\begin{ozn}
+Якщо $F'(z)=f(z)$ для $\forall z\in D$, то функція $F(z)$ називається первісною функції $f(z)$ в області $D$.
+\end{ozn}
+
+Як бачимо, поняття первісної для функцій комплексного змінного вводиться таким де чином, як для функцій дійсного змінного.
+
+З означення первісно і теореми ! маємо, що $F(z)= \int_{z_0}^{z} f(\xi) \,d\xi$ є первісною функції $f(z)$/
+
+\begin{thm}
+Якщо функція $f(z)$ диференційовна в скінченній однозв'язній областв $D$, то вона має в $D$ первісну $F(z)$.
+\end{thm}
+
+\begin{proof}
+Функція  задовольняє умови теореми !. Тому за цією теоремою функція $F(z)= \int_{z_0}^{z} f(\xi) \,d\xi$ є первісною $f(z)$. Теорема доведена.
+\end{proof}
+
+\begin{thm}
+Сукупність всіх первісних функції $f(z)$ в області $D$ визначається формулою $F_1(z)+C$, де $F_1(z)$ деяка первісна функції $f(z)$, а $C$ --- довільна стала
+\end{thm}
+
+\begin{dov}
+Якщо $F_1(z)$ і $F_2(z)$ --- первісні функції $f(z)$ в області $D$, то функція $F(z)=F_2(z)-F_1(z)=u+iv$ є сталою в області $D$, бо за умовою $F'(z)=F_2'(z)- -F_1'(z)=f(z)-f(z)=0$ для $\forall z \in D$. А звідси слідує, згідно умови \emph{КРЕДа} (див. 5.4, формули !, !), що $\frac{\,du}{\,dx}=\frac{\,dv}{\,dy}=\frac{\,du}{\,dy}=\frac{\,dv}{\,dx}=0$ в області $D$, тобто $F(z)\equiv const$, або $F_2(z)=F_1(z)+C$, де $C$ --- комплексна стала.
+\end{dov}
+
+\begin{corollary}
+При умовах теореми !, або ! довільна первісна $F(z)$ функції $f(z)$ виражається формулою
+
+\begin{equation}\label{xy}
+F(z)= \int_{z_0}^{z}f(\xi)\,d\xi + C,
+\end{equation}
+де $C$ --- комплексна стала.
+\end{corollary}
+
+\begin{corollary}
+При умовах теореми !, або ! має місце формула Ньютона-Лейбніца
+\begin{equation}\label{xy}
+\int_{z_0}^{z_1}f(\xi)\,d\xi = F(z_1) - F(z_0)
+\end{equation}
+\end{corollary}
+\begin{proof}
+
+Якщо покласти в формулі ! $z=z_0$, то одердимо, що $F(z_0)=C$, а якщо --- $z=z_1$, то
+\[F(z_1)=\int_{z_0}^{z_1}f(\xi)\,d\xi + C = \int_{z_0}^{z_1}f(\xi)\,d\xi + F(z_0). \]
+
+Звідси слідує рівність !.
+\end{proof}
+
+\begin{corollary}
+Якщо функції $f(z)$ і $g(z)$ задовольняють умови теореми !, то справедлива формула інтегрування частинами:
+\begin{equation}\label{xy}
+\int_{z_0}^{z_1} f(\xi)g'(\xi)\,d\xi = [f(\xi)g(\xi)] \bigg|_{z_0}^{z_1}-\int_{z_0}^{z_1}f'(\xi)g(\xi)\,d\xi.
+\end{equation}
+\end{corollary}
+\begin{dov}
+Оскільки $(f\cdot g)'=f'\cdot g + f \cdot g'$, то користуючись формулою !, будемо мати
+\[ \int_{z_0}^{z_1}(fg)'\,d\xi=f(\xi_1)\cdot g(\xi_1)-f(z_0)\cdot g(z_0) = [f(\xi)g(\xi)]\bigg|_{z_0}^{z_1}, \]
+що доводить рівність !.
+\end{dov}
+
+В однозв'язній області інтеграли від диференційовних елементарних функцій комплексного змінного очислюються з допомогою тих же і формул, що й у випадку дійсних функцій.
+\\ \\ \\
+\begin{exm}
+Функція $f(z)=\frac{1}{z}$ диференційовна в неоднозв'язній області $D:0<|z|<\infty$. Якщо $ \widetilde{D}\subset D$ і $\widetilde{D}$ --- однозв'язна область. Функція
+
+\[ F(z) = \int_{1}^{z} \frac{\,d\xi}{\xi}, \quad z \in \widetilde{D}, \]
+
+де інтеграл береться по довільній кривій, що лежить в $\widetilde{D_1}$ є первісною, згідно теореми !, для функції $\frac{1}{z}$ і $F'(z)=\frac{1}{z}$. Але функція
+
+\[ \Phi (z)= \int_{1}^{z} \frac{\,d\xi}{\xi}, \quad z \in D \]
+
+є неоднозначною в області $D$, бо
+
+\[ \int_{|z|=1} \frac{\,d\xi}{\xi}=2\pi i \neq 0. \]
+\end{exm}
+
+\newpage
+
+\section{Інтегральна формула Коші}\label{int}\allowdisplaybreaks
+
+\subsection{Інтеграл Коші.}
+З інтегральної теореми Коші слідує одна з важливіших (і красивіших) формул теорії функцій комплексного змінного --- інтегральна формула Коші.
+\begin{thm}[інтегральна формула Коші]
+Нехай $f(z)$ --- функція однозначна і аналітична в області $D$ і $L$ --- замкнута жорданова спрямлювана крива, яка належить $D$ разом із своєю внутрішністю $G$. Тоді для будь-якої точки $z\in G$ справедлива інтегральна формула Коші.
+\begin{equation}\label{xy}
+f(z)=\frac{1}{2\pi i}\int_{L}\frac{f(\xi)}{\xi - z}\,d\xi, \quad z\in G.
+\end{equation}
+
+Тут крива $L$ проходиться в додатньому напрямі, тобто проти годинникової стрілки. Інтеграл в правій часті формули ! називають інтегралом Коші.
+\end{thm}
+\begin{dov}
+Опишемо з точки $z$, як з центра, коло $\gamma_\rho$ настільки малого радіуса $\rho$, щоб воно містилось в $L$. Тоді для контура, утвореного кривими $L$ і $\gamma_\rho$, будемо мати:
+\begin{equation}\label{xy}
+\frac{1}{2\pi i}\int_{L}\frac{f(\xi)\,d\xi}{\xi-z} = \frac{1}{2\pi i}\int_{\gamma_\rho} \frac{f(\xi)\,d\xi}{\xi-z}
+\end{equation}
+Для доведення формули ! достатньо встановити рівність
+\[ f(z)= \frac{1}{2\pi i} \int_{L}\frac{f(\xi)\,d\xi}{\xi-z} \]
+або рівність
+\begin{equation}\label{xy}
+\int_{\gamma_\rho}\frac{f(\xi)}{\xi-z}\,d\xi=2\pi if(z) = \int_{\gamma_\rho}\frac{f(\xi)}{\xi-z}\,d\xi-f(z)\int_{\gamma_\rho}\frac{d\xi}{\xi-z}=\int_{\gamma_\rho}\frac{f(\xi)-f(z)}{\xi-z}\,d\xi=0.
+\end{equation}
+Внаслідок неперервності функції $f(\xi)$ в точці $z$ нерівність
+\[ |f(\xi)-f(z)|<\epsilon, \quad \xi\in\gamma_\phi \]
+
+буде виконуватись для $\forall\epsilon>0$, якщо $\rho<\delta=\delta(\epsilon)$. Тому
+\[ \int_{\gamma_\rho} \frac{f(\xi)-f(z)}{\xi-z}\,d\xi|< \frac{\epsilon}{\rho} 2\pi\rho=2\pi\epsilon. \]
+А значить
+\[ \lim_{\rho \to 0} \int_{\gamma_\rho} \frac{f(\xi)-f(z)}{\xi-z}\,d\xi=0. \]
+
+Інтеграл $\int_{\gamma_\rho} \frac{f(\xi)}{\xi - z}\,d\xi$ не залежить від $\rho$, що видно з рівності !, а інтеграл $\int_{\gamma_\rho} \frac{f(\xi)-f(z)}{\xi - z}\,d\xi$ також не залежить від $\rho$. Значить він рівний нулю при всіх $\rho < \delta(\epsilon)$. Таким чином рівність ! справедлива і інтегральна формула Коші !.
+Значення функції $f(z)$ всередині області виражається з допомогою формули ! через її значення цієї області.
+Нехай функція $f(z)$ диференційовна в області $D$, а $\gamma_1$ і $\gamma_2$ --- жорданові спрямлювальні криві ($\gamma_1$ лежить всередині $\gamma_2$), які утворюютть границю області $D_1 \subset D$ (див. рис. !). Тоді для $\forall z \in D_1$ справедлива формула
+
+\begin{equation}\label{xy}
+f(z)=\frac{1}{2\pi i}\int_{\gamma_2}\frac{f(\xi)}{\xi-z}\,d\xi-\frac{1}{2\pi i}\int_{\gamma_1}\frac{f(\xi)}{\xi-z}\,d\xi
+\end{equation}
+При обході кривих $\gamma_2$ і $\gamma_1$ внутрішністю кожної з них залишається зліва.
+\end{dov}
+
+\begin{remark}
+Якщо в правій частині формули ! $z$ належить зовнішності кривої $\Gamma$, тобто $z \in \bar{D}$, то підінтегральна функція диференційовна по $\xi$ скрізь в $D$ і за теоремою Коші інтеграл рівний нулю, тобто
+
+\[ \frac{1}{2\pi i} \int_{\Gamma} \frac{f(\xi)}{\xi-z}\,d\xi= \bigg\{ \begin{matrix} f(z), \quad z\in D \\ 0, \quad z \in D \end{matrix} \]
+
+\end{remark}
+
+\subsection{Теорема про середнє.}
+Теорема про середнє. Якщо функція $f(z)$ диференційовна в крузі $K:|z-z_0|<R$ і неперервна в замкнутому крузі $\bar{K}$, то значення цієї функції в центрі круга рівне середньому арифметичному її значень на колі, тобто
+\begin{equation}\label{xy}
+f(z_0)=\frac{1}{2\pi}f(z_0+Re^{i\varphi})\,d\varphi.
+\end{equation}
+
+\begin{dov}
+Якщо в формулі ! взяти $L$ як коло радіуса $R$ з центром в точці $z_0$, тобто
+\[ L: \xi=z_0+Re^{i\varphi},\quad 0\leq\varphi\leq2\pi,\quad \text{то} \]
+\[ f(x)=2 \]
+
+Що й доводить формула (5)
+\end{dov}
+
+\end{document} 
